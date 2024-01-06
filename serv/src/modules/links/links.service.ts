@@ -15,9 +15,6 @@ export class LinksService {
   async generateLink({ link, userId, description = '' }: linksDto) {
     try {
       const code = generate(8);
-      console.log(this.#baseUrl);
-      console.log(process.env.BASE_URL)
-
       const result = {
         oldLink: link,
         newLink: `${this.#baseUrl}/links/${code}`,
@@ -47,7 +44,7 @@ export class LinksService {
 
   async getOne(url) {
     try {
-   
+
       return await this.linkModel.findOne({ newLink: `${this.#baseUrl}/links/${url}` }).exec();
     } catch (e) {
       throw e
@@ -56,7 +53,7 @@ export class LinksService {
 
   async delete(id) {
     try {
-      const res = await this.linkModel.deleteOne({_id: id})
+      const res = await this.linkModel.deleteOne({ _id: id })
       if (res.deletedCount === 0) throw new HttpException('the link with same id didn`t find', HttpStatus.BAD_REQUEST)
       return 'success'
     }
