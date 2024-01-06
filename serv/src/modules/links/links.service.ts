@@ -15,6 +15,8 @@ export class LinksService {
   async generateLink({ link, userId, description = '' }: linksDto) {
     try {
       const code = generate(8);
+      console.log(this.#baseUrl);
+      console.log(process.env.BASE_URL)
 
       const result = {
         oldLink: link,
