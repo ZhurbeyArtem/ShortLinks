@@ -23,6 +23,7 @@ export const Auth = () => {
     try {
 
       const result: any = await logUser(data)
+console.log(result);
 
       dispatch(setCredentials({ token: result.data.token }))
       notify("Success")
