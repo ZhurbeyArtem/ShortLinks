@@ -29,8 +29,7 @@ console.log(result);
       notify("Success")
       navigate('/links')
     } catch (e: any) {
-      console.log(e);
-      notify(e.error.data.message)
+      notify(e)
     }
 
   }
@@ -44,9 +43,7 @@ console.log(result);
       notify("Success")
       navigate('/links')
     } catch (e: any) {
-      console.log(e);
-
-      notify(e.error.data.message)
+      notify(e)
     }
 
 
