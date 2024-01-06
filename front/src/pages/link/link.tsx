@@ -69,14 +69,10 @@ export const LinkApp = () => {
                 <DeleteOutlined style={{ marginLeft: '9px', color: 'red' }} onClick={() => del(item._id)} />
               </StyledListItem>).reverse()}
           </StyledList>
-          {
-            links?.data.length < 1 ? '' :
-              <div style={{ textAlign: 'center' }}>
-                <CustomButton text={'Prev'} currentPage={page} onClick={() => setPage(page - 1)} />
-                <CustomButton text={'Next'} currentPage={page} onClick={() => setPage(page + 1)} />
-              </div>
-          }
-
+          <div style={{ textAlign: 'center' }}>
+            <CustomButton text={'Prev'} currentPage={page} onClick={() => setPage(page - 1)} />
+            <CustomButton text={'Next'} currentPage={page} onClick={() => setPage(page + 1)} />
+          </div>
         </Wrapper >
       </>
 
