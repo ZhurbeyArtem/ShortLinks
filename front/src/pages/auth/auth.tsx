@@ -23,8 +23,10 @@ export const Auth = () => {
     try {
 
       const result: any = await logUser(data)
-console.log(result);
-
+      if (result.error !== undefined) {
+        notify(result.error.data.message)
+        return;
+      }
       dispatch(setCredentials({ token: result.data.token }))
       notify("Success")
       navigate('/links')
@@ -37,8 +39,10 @@ console.log(result);
   const registration = async (data: IAuth) => {
     try {
       const result: any = await regUser(data)
-      console.log('++');
-      console.log(result)
+      if (result.error !== undefined) {
+        notify(result.error.data.message)
+        return;
+      }
       dispatch(setCredentials({ token: result.data.token }))
       notify("Success")
       navigate('/links')
