@@ -20,26 +20,33 @@ export const Auth = () => {
   const [password, setPassword] = useState('')
   const navigate = useNavigate()
   const login = async (data: IAuth) => {
-    const result: any = await logUser(data)
-    if (result.error !== undefined) {
-      notify(result.error.data.message)
-      return;
+    try {
+
+      const result: any = await logUser(data)
+
+      dispatch(setCredentials({ token: result.data.token }))
+      notify("Success")
+      navigate('/links')
+    } catch (e: any) {
+      console.log(e);
+      notify(e.error.data.message)
     }
-    dispatch(setCredentials({ token: result.data.token }))
-    notify("Success")
-    navigate('/links')
+
   }
 
   const registration = async (data: IAuth) => {
-    const result: any = await regUser(data)
-    if (result.error !== undefined) {
-      notify(result.error.data.message)
-      return;
+    try {
+      const result: any = await regUser(data)
+      console.log(result)
+      dispatch(setCredentials({ token: result.data.token }))
+      notify("Success")
+      navigate('/links')
+    } catch (e: any) {
+      console.log(e);
+
+      notify(e.error.data.message)
     }
-    console.log(result)
-    dispatch(setCredentials({token: result.data.token}))
-    notify("Success")
-    navigate('/links')
+
 
   }
 
