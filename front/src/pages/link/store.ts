@@ -15,7 +15,7 @@ interface Links {
 export const linksApi = createApi({
   reducerPath: 'linksApi',
   baseQuery: fetchBaseQuery({
-    baseUrl: `${process.env.REACT_APP_BACK_URL}/links` ,
+    baseUrl: `https://${process.env.REACT_APP_BACK_URL}/links` ,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token
       if (token) {
