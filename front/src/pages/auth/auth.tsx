@@ -37,6 +37,7 @@ export const Auth = () => {
   const registration = async (data: IAuth) => {
     try {
       const result: any = await regUser(data)
+      console.log('++');
       console.log(result)
       dispatch(setCredentials({ token: result.data.token }))
       notify("Success")
