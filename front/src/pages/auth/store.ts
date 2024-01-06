@@ -2,6 +2,7 @@ import { createApi, fetchBaseQuery } from "@reduxjs/toolkit/dist/query/react"
 import { User, IAuth } from "./interface"
 
 export const authApi = createApi({
+  
   reducerPath: 'authApi',
   baseQuery: fetchBaseQuery({ baseUrl: `${process.env.REACT_APP_BACK_URL}/users` }),
   endpoints: (build) => ({
