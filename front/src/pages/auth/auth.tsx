@@ -30,14 +30,14 @@ export const Auth = () => {
     navigate('/links')
   }
 
-  const registration = async (data: IAuth) => {
+  const registration = async (data: IAuth) => {    
     const result: any = await regUser(data)
     if (result.error !== undefined) {
       notify(result.error.data.message)
       return;
     }
     console.log(result)
-    dispatch(setCredentials({token: result.data.token}))
+    dispatch(setCredentials({ token: result.data.token }))
     notify("Success")
     navigate('/links')
 

@@ -14,7 +14,8 @@ interface Links {
 
 export const linksApi = createApi({
   reducerPath: 'linksApi',
-  baseQuery: fetchBaseQuery({ baseUrl: 'http://localhost:5000/links' ,
+  baseQuery: fetchBaseQuery({
+    baseUrl: process.env.REACT_APP_BASE_URL,
     prepareHeaders: (headers, { getState }) => {
       const token = (getState() as RootState).user.token
       if (token) {
@@ -27,14 +28,14 @@ export const linksApi = createApi({
   tagTypes: ['Links'],
   endpoints: (builder) => ({
     getAll: builder.query<Links, number>({
-      query(page){
+      query(page) {
         return {
-          url:'',
+          url: '',
           params: {
             page
           }
         }
-        
+
 
       },
       providesTags: ['Links']
@@ -44,13 +45,13 @@ export const linksApi = createApi({
         return {
           url: '',
           method: "POST",
-          body: {link: link}
+          body: { link: link }
         }
       },
       invalidatesTags: ['Links']
     }),
     delete: builder.mutation<string, string>({
-      query(id){
+      query(id) {
         return {
           url: `/${id}`,
           method: "DELETE",
